@@ -1,6 +1,6 @@
 import os
 
-password = os.environ.get("APP_PASSWORD")
+# Removed password entirely - not needed for calculator
 
 def calculate(a, b, operation):
     """Perform a calculation based on the operation."""
