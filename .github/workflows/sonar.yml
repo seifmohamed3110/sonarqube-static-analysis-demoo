@@ -20,7 +20,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install pytest pytest-cov
+        run: pip install --only-binary :all: pytest==8.3.5 pytest-cov==6.0.0
 
       - name: Run tests with coverage
         run: pytest --cov=. --cov-report=xml
