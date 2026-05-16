@@ -1,7 +1,5 @@
-# FIXED VERSION - stronger tests with edge cases
-
 import pytest
-from calculator import calculate
+from calculator import calculate, get_result
 
 def test_add():
     assert calculate(2, 3, "add") == 5
@@ -22,3 +20,6 @@ def test_divide_by_zero():
 def test_unknown_operation():
     with pytest.raises(ValueError, match="Unknown operation"):
         calculate(10, 5, "unknown")
+
+def test_get_result():
+    assert get_result(2, 3, "add") == "The result is: 5"
