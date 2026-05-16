@@ -1,44 +1,34 @@
-# BAD VERSION - has quality problems intentionally
+# FIXED VERSION - quality problems resolved
 
-password = "admin123"  # Hardcoded password (security issue)
+import os
+
+# Removed hardcoded password (security fix)
+password = os.environ.get("APP_PASSWORD")
 
 def calculate(a, b, operation):
-    result = 0
+    """Perform a calculation based on the operation."""
 
     if operation == "add":
-        result = a + b
+        return a + b
 
-    if operation == "subtract":
-        result = a - b
+    elif operation == "subtract":
+        return a - b
 
-    if operation == "multiply":
-        result = a * b
+    elif operation == "multiply":
+        return a * b
 
-    if operation == "divide":
-        result = a / b  # No zero check (reliability issue)
+    elif operation == "divide":
+        if b == 0:
+            raise ValueError("Cannot divide by zero")  # Reliability fix
+        return a / b
 
-    return result
+    else:
+        raise ValueError(f"Unknown operation: {operation}")  # Invalid operation fix
 
 
-def print_result(a, b, operation):
+def get_result(a, b, operation):
+    """Return the result as a formatted string."""
     result = calculate(a, b, operation)
-    print("The result is: " + str(result))
+    return "The result is: " + str(result)
 
-
-# Duplicated function (code smell)
-def calculate_again(a, b, operation):
-    result = 0
-
-    if operation == "add":
-        result = a + b
-
-    if operation == "subtract":
-        result = a - b
-
-    if operation == "multiply":
-        result = a * b
-
-    if operation == "divide":
-        result = a / b
-
-    return result
+# calculate_again function removed (duplication fix)
